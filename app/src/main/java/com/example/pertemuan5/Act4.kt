@@ -53,5 +53,10 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
             label = { Text(text = "Nama Lengkap") },
             onValueChange = { textName = it }
         )
+        Row(
+            modifier = Modifier.padding(top = 8.dp, bottom = 8.dp) // Tambahan padding agar lebih rapi
+        ) {
+            // Iterasi gender di sini
+        }
     }
 }
