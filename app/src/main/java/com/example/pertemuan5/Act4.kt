@@ -30,16 +30,18 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun FormDataDiri(modifier: Modifier = Modifier) {
-// Variable untuk mengingat nilai masukan dari keyboard
+    // Variable untuk mengingat nilai masukan dari keyboard
     var textName by remember { mutableStateOf("") }
     var textAlamat by remember { mutableStateOf("") }
     var textJK by remember { mutableStateOf("") }
     val gender: List<String> = listOf("laki-laki", "Perempuan")
-// Variabel-variabel untuk menyimpan data yang diperoleh dari komponen UI
+
+    // Variabel-variabel untuk menyimpan data yang diperoleh dari komponen UI
     var nama by remember { mutableStateOf("") }
     var alamat by remember { mutableStateOf("") }
     var jenis by remember { mutableStateOf("") }
-// Column Utama
+
+    // Column Utama
     Column(
         modifier = modifier.padding(top = 50.dp),
         verticalArrangement = Arrangement.Top,
@@ -53,6 +55,7 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
             label = { Text(text = "Nama Lengkap") },
             onValueChange = { textName = it }
         )
+
         Row(
             modifier = Modifier.padding(top = 8.dp, bottom = 8.dp) // Tambahan padding agar lebih rapi
         ) {
@@ -71,57 +74,62 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                         onClick = { textJK = item }
                     )
                     Text(item)
-                    OutlinedTextField(
-                        value = textAlamat,
-                        singleLine = true,
-                        modifier = Modifier.width(250.dp),
-                        label = { Text("Alamat") },
-                        onValueChange = { textAlamat = it }
-                    )
-                    HorizontalDivider(
-                        modifier = Modifier.padding(
-                            bottom = dimensionResource(id = R.dimen.padding_medium),
-                            top = dimensionResource(id = R.dimen.padding_medium)
-                        ),
-                        thickness = dimensionResource(id = R.dimen.divider_tipis),
-                        color = Color.DarkGray
-                    )
-                    Button(
-                        modifier = Modifier.width(250.dp), // Disamakan dengan lebar text field agar rapi
-                        // the button is enabled when the user makes a selection
-                        enabled = textAlamat.isNotEmpty() && textName.isNotEmpty() && textJK.isNotEmpty(), // Diperbarui agar button aktif jika semua form diisi
-                        onClick = {
-                            nama = textName
-                            jenis = textJK
-                            alamat = textAlamat
-                        }
-                    ) {
-                        Text(stringResource(id = R.string.submit))
-                    }
-                    HorizontalDivider(
-                        modifier = Modifier.padding(
-                            bottom = dimensionResource(id = R.dimen.padding_medium),
-                            top = dimensionResource(id = R.dimen.padding_medium)
-                        ),
-                        thickness = dimensionResource(id = R.dimen.divider_tipis),
-                        color = Color.DarkGray
-                    )
-                    // ElevatedCard diletakkan di DALAM Column utama
-                    ElevatedCard(
-                        elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
-                        colors = CardDefaults.cardColors(containerColor = Color.Black),
-                        modifier = Modifier
-                            .padding(top = 16.dp) // Tambahan padding atas agar tidak menempel dengan divider
-                            .height(100.dp)
-                            .width(300.dp)
-                    ) {
-                        Column(modifier = Modifier.padding(horizontal = 15.dp, vertical = 15.dp)) {
-                            Text(text = "Nama : $nama", color = Color.White)
-                            Text(text = "Gender : $jenis", color = Color.White)
-                            Text(text = "Alamat : $alamat", color = Color.White)
-                        }
-                    }
                 }
+            }
+        }
+
+        OutlinedTextField(
+            value = textAlamat,
+            singleLine = true,
+            modifier = Modifier.width(250.dp),
+            label = { Text("Alamat") },
+            onValueChange = { textAlamat = it }
+        )
+
+        HorizontalDivider(
+            modifier = Modifier.padding(
+                bottom = dimensionResource(id = R.dimen.padding_medium),
+                top = dimensionResource(id = R.dimen.padding_medium)
+            ),
+            thickness = dimensionResource(id = R.dimen.divider_tipis),
+            color = Color.DarkGray
+        )
+
+        Button(
+            modifier = Modifier.width(250.dp), // Disamakan dengan lebar text field agar rapi
+            // the button is enabled when the user makes a selection
+            enabled = textAlamat.isNotEmpty() && textName.isNotEmpty() && textJK.isNotEmpty(), // Diperbarui agar button aktif jika semua form diisi
+            onClick = {
+                nama = textName
+                jenis = textJK
+                alamat = textAlamat
+            }
+        ) {
+            Text(stringResource(id = R.string.submit))
+        }
+
+        HorizontalDivider(
+            modifier = Modifier.padding(
+                bottom = dimensionResource(id = R.dimen.padding_medium),
+                top = dimensionResource(id = R.dimen.padding_medium)
+            ),
+            thickness = dimensionResource(id = R.dimen.divider_tipis),
+            color = Color.DarkGray
+        )
+
+        // ElevatedCard dipindahkan ke DALAM Column utama
+        ElevatedCard(
+            elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
+            colors = CardDefaults.cardColors(containerColor = Color.Black),
+            modifier = Modifier
+                .padding(top = 16.dp) // Tambahan padding atas agar tidak menempel dengan divider
+                .height(100.dp)
+                .width(300.dp)
+        ) {
+            Column(modifier = Modifier.padding(horizontal = 15.dp, vertical = 15.dp)) {
+                Text(text = "Nama : $nama", color = Color.White)
+                Text(text = "Gender : $jenis", color = Color.White)
+                Text(text = "Alamat : $alamat", color = Color.White)
             }
         }
     }
