@@ -39,4 +39,12 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
     var nama by remember { mutableStateOf("") }
     var alamat by remember { mutableStateOf("") }
     var jenis by remember { mutableStateOf("") }
+// Column Utama
+    Column(
+        modifier = modifier.padding(top = 50.dp),
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        // Komponen UI akan masuk ke sini
+    }
 }
