@@ -86,6 +86,18 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                         thickness = dimensionResource(id = R.dimen.divider_tipis),
                         color = Color.DarkGray
                     )
+                    Button(
+                        modifier = Modifier.width(250.dp), // Disamakan dengan lebar text field agar rapi
+                        // the button is enabled when the user makes a selection
+                        enabled = textAlamat.isNotEmpty() && textName.isNotEmpty() && textJK.isNotEmpty(), // Diperbarui agar button aktif jika semua form diisi
+                        onClick = {
+                            nama = textName
+                            jenis = textJK
+                            alamat = textAlamat
+                        }
+                    ) {
+                        Text(stringResource(id = R.string.submit))
+                    }
                 }
             }
         }
