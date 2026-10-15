@@ -56,7 +56,19 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
         Row(
             modifier = Modifier.padding(top = 8.dp, bottom = 8.dp) // Tambahan padding agar lebih rapi
         ) {
-            // Iterasi gender di sini
+            gender.forEach { item ->
+                Row(
+                    modifier = Modifier
+                        .selectable(
+                            selected = textJK == item,
+                            onClick = { textJK = item }
+                        )
+                        .padding(end = 16.dp), // Tambahan padding antar radio button
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    // Komponen tombol radio di sini
+                }
+            }
         }
     }
 }
