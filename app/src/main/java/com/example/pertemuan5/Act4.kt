@@ -66,7 +66,11 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                         .padding(end = 16.dp), // Tambahan padding antar radio button
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    // Komponen tombol radio di sini
+                    RadioButton(
+                        selected = textJK == item,
+                        onClick = { textJK = item }
+                    )
+                    Text(item)
                 }
             }
         }
